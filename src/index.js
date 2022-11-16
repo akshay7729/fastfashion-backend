@@ -24,13 +24,9 @@ async function startServer() {
   apolloServer.applyMiddleware({ app });
 }
 
-startServer();
-
-// const apolloServer = new ApolloServer({ typeDefs, resolvers });
-// apolloServer.applyMiddleware({ app });
-
 mongoose.connect(connectionURL).then(() => {
   console.log("Mongo DB connection successful");
+  startServer();
 });
 
 app.listen(PORT, () => {
