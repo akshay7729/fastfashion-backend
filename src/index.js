@@ -1,10 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server-express");
 
-const connectionURL =
-  "mongodb+srv://dbUser:akshay@cluster0.hb4mx.mongodb.net/fastfashion?retryWrites=true&w=majority";
+const connectionURL = process.env.MONGOCONNECTIONURL;
 
 const UserRouter = require("./Routers");
 
