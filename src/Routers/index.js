@@ -1,10 +1,10 @@
 const express = require("express");
-const User = require("../models");
+const UserModal = require("../models/userModel");
 const router = new express.Router();
 
 router.post("/signup", async (req, res, next) => {
   // insert document
-  const newUser = new User(req.body);
+  const newUser = new UserModal(req.body);
   try {
     console.log("newUser", newUser);
     await newUser.save();
@@ -17,7 +17,7 @@ router.post("/signup", async (req, res, next) => {
 });
 
 router.get("/user", async (req, res, next) => {
-  await User.find({}, (err, docs) => {
+  await UserModal.find({}, (err, docs) => {
     if (err) {
       return res.status(404).send(err);
     }
