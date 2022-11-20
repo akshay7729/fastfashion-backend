@@ -22,6 +22,8 @@ const resolvers = {
         lastName: getUser.lastName,
         email: getUser.email,
         phoneNumber: getUser.phone,
+        userName: getUser.userName,
+        password: getUser.password,
       };
     },
   },
