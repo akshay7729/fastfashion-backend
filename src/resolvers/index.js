@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const UserModel = require("../models/userModel");
+const ProductModel = require("../models/productsModel");
 
 const resolvers = {
   Query: {
@@ -25,6 +26,20 @@ const resolvers = {
         userName: getUser.userName,
         password: getUser.password,
       };
+    },
+    products: async (parent, args, ctx, info) => {
+      const query = ProductModel.find({});
+      query instanceof mongoose.Query;
+      const docs = await query;
+      return docs;
+    },
+  },
+  Mutation: {
+    createUser: (parent, args, ctx, info) => {
+      const newUser = new UserModel(args);
+      console.log("mutation args", args);
+      console.log("mutation ctx", newUser);
+      return newUser.save();
     },
   },
 };
