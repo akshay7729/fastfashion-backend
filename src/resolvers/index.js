@@ -27,7 +27,15 @@ const resolvers = {
         password: getUser.password,
       };
     },
-    products: async (parent, args, ctx, info) => {
+    users: async (parent, args, ctx, info) => {
+      const query = UserModel.find();
+      query instanceof mongoose.Query;
+      const docs = await query;
+
+      return docs;
+    },
+
+    products: async (parent, { id }, ctx, info) => {
       const query = ProductModel.find({});
       query instanceof mongoose.Query;
       const docs = await query;
@@ -37,8 +45,6 @@ const resolvers = {
   Mutation: {
     createUser: (parent, args, ctx, info) => {
       const newUser = new UserModel(args);
-      console.log("mutation args", args);
-      console.log("mutation ctx", newUser);
       return newUser.save();
     },
   },

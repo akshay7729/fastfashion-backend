@@ -1,6 +1,7 @@
 const express = require("express");
 const UserModal = require("../models/userModel");
 const router = new express.Router();
+const passport = require("passport");
 
 router.post("/signup", async (req, res, next) => {
   // insert document
@@ -15,6 +16,16 @@ router.post("/signup", async (req, res, next) => {
     res.status(400).send(error);
   }
 });
+
+// login
+// router.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: "/",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//   })
+// );
 
 router.get("/user", async (req, res, next) => {
   await UserModal.find({}, (err, docs) => {

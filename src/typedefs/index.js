@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Query {
     greeting(name: String): String
     user(id: Float, phoneNumber: Float): User!
+    users: [User!]
     products(id: Float): [Products!]
   }
 
